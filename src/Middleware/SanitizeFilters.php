@@ -2,7 +2,7 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI\Middleware;
 
-use Closure;
+use \Closure;
 use MarshallOliver\LaravelCenterEdgeAPI\Area;
 use MarshallOliver\LaravelCenterEdgeAPI\Arrival;
 use MarshallOliver\LaravelCenterEdgeAPI\Booking;
@@ -20,8 +20,6 @@ class SanitizeFilters
      */
     public function handle($request, Closure $next)
     {
-
-        dd('test');
 
         if ($request->filter) {
 
@@ -70,8 +68,6 @@ class SanitizeFilters
                         break;
 
                 }
-
-                dd($filters);
 
                 foreach ($filters as $filter => $operators) {
 

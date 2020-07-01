@@ -23,7 +23,8 @@ class LaravelCenterEdgeAPIProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['router']->pushMiddlewareToGroup('api', Middleware\SanitizeFilters::class);
+        $router = $this->app->make(\Illuminate\Routing\Router::class);
+        $router->prependMiddlewareToGroup('api', \MarshallOliver\LaravelCenterEdgeAPI\Middleware\SanitizeFilters::class);
         $this->loadRoutesFrom(__DIR__.'/routes.php');
     }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('api/catalog/{database}')->group(function () {
+Route::group(['middleware' => ['api'], 'prefix' => 'api/catalog/{database}'], function () {
 
 	Route::get('areas', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\AreaController@index');
 	Route::get('areas/arrivals', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\AreaController@indexWithArrivals');
