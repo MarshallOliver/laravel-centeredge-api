@@ -14,5 +14,10 @@
     			"MarshallOliver\\LaravelCenterEdgeAPI\\LaravelCenterEdgeAPIProvider"
     		]
     	}
+    },
+    "autoload": {
+        "psr-4": {
+            "MarshallOliver\\LaravelCenterEdgeAPI\\": "workbench/laravel-centeredge-api/src"
+        }
     }
 }
