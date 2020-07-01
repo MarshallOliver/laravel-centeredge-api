@@ -1,0 +1,18 @@
+{
+    "name": "marshalloliver/laravel-centeredge-api",
+    "description": "A package for reading from and writing to a CenterEdge Advantage database",
+    "authors": [
+        {
+            "name": "Marshall Oliver",
+            "email": "moliver@andrettikarting.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+    	"laravel": {
+    		"providers": [
+    			"MarshallOliver\\LaravelCenterEdgeAPI\\LaravelCenterEdgeAPIProvider"
+    		]
+    	}
+    }
+}
