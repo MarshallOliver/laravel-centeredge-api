@@ -3,8 +3,8 @@
 namespace MarshallOliver\LaravelCenterEdgeAPI\Controllers;
 
 use MarshallOliver\LaravelCenterEdgeAPI\Booking;
-use MarshallOliver\LaravelCenterEdgeAPI\BookingCollection;
-use MarshallOliver\LaravelCenterEdgeAPI\Booking as BookingResource;
+use MarshallOliver\LaravelCenterEdgeAPI\Resources\BookingCollection;
+use MarshallOliver\LaravelCenterEdgeAPI\Resources\Booking as BookingResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

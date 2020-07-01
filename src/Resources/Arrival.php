@@ -44,7 +44,7 @@ class Arrival extends JsonResource
 
         $result['areas'] = new AreaCollection($this->whenLoaded('areas'));
 
-        $result['group_area_bookings'] = new GroupAreaBookingCollection($this->whenLoaded('bookings'));
+        $result['group_area_bookings'] = new BookingCollection($this->whenLoaded('bookings'));
 
         return $result;
     }
