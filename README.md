@@ -215,6 +215,8 @@ web_store_version
 
 #### MessageLog
 
+<details><summary>Fields</summary>
+
 message_id  
 message_date_time  
 station_no  
@@ -223,6 +225,8 @@ emp_no
 message_text  
 stack_trace  
 error  
+
+</details>
 
 /messagelog
 
