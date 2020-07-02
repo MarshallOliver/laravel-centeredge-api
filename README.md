@@ -215,14 +215,14 @@ web_store_version
 
 #### MessageLog
 
-message_id
-message_date_time
-station_no
-program_name
-emp_no
-message_text
-stack_trace
-error
+message_id  
+message_date_time  
+station_no  
+program_name  
+emp_no  
+message_text  
+stack_trace  
+error  
 
 /messagelog
 
