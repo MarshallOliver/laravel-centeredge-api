@@ -6,17 +6,36 @@ composer require marshalloliver/laravel-centeredge-api
 
 ## Usage
 
-### Introduction
-
-#### Catalogs
+### Catalog
 
 All calls to the api should begin:
 
-/api/catalog/{catalogName} 
+/api/catalog/{catalog} 
 
-The catalogName references a Laravel database connection.  For instance, if your Laravel application is dedicated to serving the CenterEdge API from a specific CenterEdge database with default database connection named CenterEdge, all api calls should be prepended with /api/catalog/CenterEdge.
+The catalog references a Laravel database connection.  For instance, if your Laravel application is dedicated to serving the CenterEdge API from a specific CenterEdge database with default database connection named CenterEdge, all api calls should be prepended with /api/catalog/CenterEdge.
 
-If your Laravel application connects to multiple CenterEdge databases, these can either be configured individually in the application's database config file or by using a multiple database connection package such as the (currently unreleased) marshalloliver/laravel-dynamic-connections package.
+If your Laravel application connects to multiple CenterEdge databases, these can either be configured individually in the application's database config file or by using a multiple database connection package such as the (currently unreleased) marshalloliver/laravel-dynamic-catalogs package.
+
+### Filters
+
+The filter parameter may be included in the query string in the following format:
+
+`?filter[resource][field][operator]=value`
+
+**Example:**
+`?filter[arrivals][start_date_time][gte]=2020-07-02 00:00:00`
+
+#### Operators
+
+The following operators are available for use with filters:
+
+`[e]: Equivalent to field = value`
+`[ne]: Equivalent to field <> value`
+`[gt]: Equivalent to field > value`
+`[lt]: Equivalent to field < value`
+`[gte]: Equivalent to field >= value`
+`[lte]: Equivalent to field <= value`
+`[like]: Equivalent to field LIKE '%value%'`
 
 ### Resources
 
