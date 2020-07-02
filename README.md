@@ -22,20 +22,20 @@ The filter parameter may be included in the query string in the following format
 
 `?filter[resource][field][operator]=value`
 
-**Example:**
+**Example:**  
 `?filter[arrivals][start_date_time][gte]=2020-07-02 00:00:00`
 
 #### Operators
 
 The following operators are available for use with filters:
 
-`[e]: Equivalent to field = value`
-`[ne]: Equivalent to field <> value`
-`[gt]: Equivalent to field > value`
-`[lt]: Equivalent to field < value`
-`[gte]: Equivalent to field >= value`
-`[lte]: Equivalent to field <= value`
-`[like]: Equivalent to field LIKE '%value%'`
+`[e]: Equivalent to field = value`  
+`[ne]: Equivalent to field <> value`  
+`[gt]: Equivalent to field > value`  
+`[lt]: Equivalent to field < value`  
+`[gte]: Equivalent to field >= value`  
+`[lte]: Equivalent to field <= value`  
+`[like]: Equivalent to field LIKE '%value%'`  
 
 ### Resources
 
