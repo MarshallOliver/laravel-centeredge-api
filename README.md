@@ -20,9 +20,10 @@ If your Laravel application connects to multiple CenterEdge databases, these can
 
 ### Resources
 
-#### Application
+<details><summary>Application</summary>
 
-<details><summary>FIELDS</summary>
+#### Fields
+
 app_id  
 location_id  
 name  
@@ -103,16 +104,17 @@ logo
 small_logo  
 receipt_logo  
 country  
-</details>
 
-<details><summary>ROUTES</summary>
+#### Routes
+
 /application
 
 **Returns:** The ApplicationInfo table.
 </details>
 
-<details><summary>FIELDS</summary>
-#### Areas
+<details><summary>Areas</summary>
+
+#### Fields
 
 area_guid  
 description  
@@ -135,9 +137,9 @@ picture
 show_capcity  
 laser_tag_area  
 go_kart_area  
-</details>
 
-<details><summary>ROUTES</summary>
+#### Routes
+
 /areas  
 **Returns:** The first 100 areas ordered by description in ascending order.
 
@@ -154,9 +156,10 @@ go_kart_area
 **Returns:** The specified area with the specified arrival.
 </details>
 
-#### Arrivals
+<details><summary>Arrivals</summary>
 
-<details><summary>FIELDS</summary>
+#### Fields
+
 ref_id  
 ref_no  
 description  
@@ -206,9 +209,9 @@ customer_id
 contact_customer_id  
 group_id  
 web_store_version  
-</details>
 
-<details><summary>ROUTES</summary>
+#### Routes
+
 /arrivals  
 **Returns:** Arrivals ordered by time_created in descending order.
 
@@ -225,9 +228,10 @@ web_store_version
 **Returns:** A specified arrival with a specified area.
 </details>
 
-#### MessageLog
+<details><summary>MessageLog</summary>
 
-<details><summary>FIELDS</summary>
+#### Fields
+
 message_id  
 message_date_time  
 station_no  
@@ -236,9 +240,9 @@ emp_no
 message_text  
 stack_trace  
 error  
-</details>
 
-<details><summary>ROUTES</summary>
+#### Routes
+
 /messagelog  
 **Returns:** The message log paginated by 50 entries per page.
 </details>
