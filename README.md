@@ -22,6 +22,7 @@ If your Laravel application connects to multiple CenterEdge databases, these can
 
 #### Application
 
+<details><summary>FIELDS</summary>
 app_id  
 location_id  
 name  
@@ -102,11 +103,15 @@ logo
 small_logo  
 receipt_logo  
 country  
+</details>
 
+<details><summary>ROUTES</summary>
 /application
 
 **Returns:** The ApplicationInfo table.
+</details>
 
+<details><summary>FIELDS</summary>
 #### Areas
 
 area_guid  
@@ -130,7 +135,9 @@ picture
 show_capcity  
 laser_tag_area  
 go_kart_area  
+</details>
 
+<details><summary>ROUTES</summary>
 /areas  
 **Returns:** The first 100 areas ordered by description in ascending order.
 
@@ -145,9 +152,11 @@ go_kart_area
 
 /areas/{area_guid}/arrivals/{ref_id}  
 **Returns:** The specified area with the specified arrival.
+</details>
 
 #### Arrivals
 
+<details><summary>FIELDS</summary>
 ref_id  
 ref_no  
 description  
@@ -197,26 +206,28 @@ customer_id
 contact_customer_id  
 group_id  
 web_store_version  
+</details>
 
+<details><summary>ROUTES</summary>
 /arrivals  
-**Returns:** The first 100 arrivals ordered by time_created in descending order.
+**Returns:** Arrivals ordered by time_created in descending order.
 
 /arrivals/areas  
-**Returns:** The first 100 arrivals ordered by time_created in descending order with the areas belonging to each arrival ordered by description.
+**Returns:** Arrivals ordered by time_created in descending order with the areas belonging to each arrival ordered by description.
 
 /arrivals/{ref_id}  
-**Returns:** The specified arrival.
+**Returns:** A specified arrival.
 
 /arrivals/{ref_id}/areas  
-**Returns:** The specified arrival with the areas belonging to the specified arrival ordered by description.
+**Returns:** A specified arrival with the areas belonging to the specified arrival ordered by description.
 
 /arrivals/{ref_id}/areas/{area_guid}  
-**Returns:** The specified arrival with the specified area.
+**Returns:** A specified arrival with a specified area.
+</details>
 
 #### MessageLog
 
-<details><summary>Fields</summary>
-
+<details><summary>FIELDS</summary>
 message_id  
 message_date_time  
 station_no  
@@ -225,9 +236,9 @@ emp_no
 message_text  
 stack_trace  
 error  
-
 </details>
 
-/messagelog
-
+<details><summary>ROUTES</summary>
+/messagelog  
 **Returns:** The message log paginated by 50 entries per page.
+</details>
