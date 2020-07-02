@@ -23,38 +23,40 @@ If your Laravel application connects to multiple CenterEdge databases, these can
 #### Application
 
 /application
+
 **Returns:** The ApplicationInfo table.
 
 #### MessageLog
 
 /messagelog
+
 **Returns:** The message log paginated by 50 entries per page.
 
 #### Areas
 
 ##### Fields
 
-area_guid
-description
-show_area
-area_type
-capacity
-min_capacity
-pre_arrival_minutes
-post_departure_minutes
-area_shown_at
-min_deposit_amount
-open_area_desc
-web_enabled
-inv_id
-web_capacity
-short_details
-long_details
-thumbnail
-picture
-show_capcity
-laser_tag_area
-go_kart_area
+area_guid  
+description  
+show_area  
+area_type  
+capacity  
+min_capacity  
+pre_arrival_minutes  
+post_departure_minutes  
+area_shown_at  
+min_deposit_amount  
+open_area_desc  
+web_enabled  
+inv_id  
+web_capacity  
+short_details  
+long_details  
+thumbnail  
+picture  
+show_capcity  
+laser_tag_area  
+go_kart_area  
 
 ##### Routes
 
@@ -130,6 +132,7 @@ web_store_version
 ##### Routes
 
 /arrivals
+
 **Returns:** The first 100 arrivals ordered by time_created in descending order.
 
 /arrivals/areas
