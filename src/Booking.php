@@ -2,6 +2,7 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
@@ -29,11 +30,21 @@ class Booking extends Model
 
     const base64 = [];
 
-    public function area() {
-    	return $this->belongsTo('MarshallOliver\LaravelCenterEdgeAPI\Area', 'AreaGUID', 'AreaGUID');
+    protected static function booted()
+    {
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('StartDateTime', 'desc');
+        });
     }
 
-    public function arrival() {
-    	return $this->belongsTo('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'RefID', 'RefID');
+    public function areas()
+    {
+        return $this->belongsTo('MarshallOliver\LaravelCenterEdgeAPI\Area', 'AreaGUID', 'AreaGUID');
     }
+
+    public function arrivals()
+    {
+        return $this->belongsTo('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'RefID', 'RefID');
+    }
+
 }

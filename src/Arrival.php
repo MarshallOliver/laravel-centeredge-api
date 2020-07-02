@@ -2,6 +2,7 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Arrival extends Model
@@ -80,11 +81,25 @@ class Arrival extends Model
 
     ];
 
+    protected static function booted()
+    {
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('TimeCreated', 'desc');
+        });
+    }
+
+    public function areas()
+    {
+    	return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Area')
+    				->using('MarshallOliver\LaravelCenterEdgeAPI\Booking')
+    				->withPivot('EventDate', 'StartDateTime', 'EndDateTime');
+    }
+
     public function bookings() {
     	return $this->hasMany('MarshallOliver\LaravelCenterEdgeAPI\Booking', 'RefID', 'RefID');
     }
 
-    public function areas() {
-    	return $this->hasManyThrough('MarshallOliver\LaravelCenterEdgeAPI\Area', 'MarshallOliver\LaravelCenterEdgeAPI\Booking', 'RefID', 'AreaGUID', 'RefID', 'AreaGUID');
-    }
+    // public function areas() {
+    // 	return $this->hasManyThrough('MarshallOliver\LaravelCenterEdgeAPI\Area', 'MarshallOliver\LaravelCenterEdgeAPI\Booking', 'RefID', 'AreaGUID', 'RefID', 'AreaGUID');
+    // }
 }

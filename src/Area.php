@@ -2,6 +2,7 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
@@ -45,8 +46,17 @@ class Area extends Model
         'picture',
     ];
 
-    public function arrivals() {
-    	return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'GroupAreaBookings', 'AreaGUID', 'RefID')->withPivot('EventDate', 'StartDateTime', 'EndDateTime');
+    protected static function booted()
+    {
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('description', 'asc');
+        });
+    }
+
+    public function arrivals()
+    {
+        return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'GroupAreaBookings', 'AreaGUID', 'RefID')
+                    ->withPivot('EventDate', 'StartDateTime', 'EndDateTime');
     }
 
 }

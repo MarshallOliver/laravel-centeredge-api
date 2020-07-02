@@ -3,8 +3,8 @@
 namespace MarshallOliver\LaravelCenterEdgeAPI\Controllers;
 
 use MarshallOliver\LaravelCenterEdgeAPI\Arrival;
-use App\Http\Resources\ArrivalCollection;
-use App\Http\Resources\Arrival as ArrivalResource;
+use MarshallOliver\LaravelCenterEdgeAPI\Resources\ArrivalCollection;
+use MArshallOliver\LaravelCenterEdgeAPI\Resources\Arrival as ArrivalResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ class ArrivalController extends Controller
 {
     public function index($database, Request $request)
     {
-    	return new ArrivalCollection(Arrival::on($database)->take($request->count ?? 100)->get());
+    	return new ArrivalCollection(Arrival::on($database)->take($request->count ?? 100)->orderBy($request->order['arrivals'] ?? 'TimeCreated', 'desc')->get());
     }
 
     public function areaIndex($database, $area, Request $request)

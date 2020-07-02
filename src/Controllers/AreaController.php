@@ -11,37 +11,38 @@ use Illuminate\Support\Str;
 
 class AreaController extends Controller
 {
-    public function index($database, Request $request)
+    public function areas($database, Request $request)
     {
 
-        return new AreaCollection(Area::on($database)->take($request->limit['areas'] ?? 100)->orderBy('description', 'asc')->get());
+        return new AreaCollection(Area::on($database)->take($request->limit ?? 100)->get());
     
     }
 
-    public function indexWithArrivals($database, Request $request)
+    public function areasWithArrivals($database, Request $request)
     {
 
-        return new AreaCollection(Area::on($database)->with(['arrivals' => function ($query) use ($request) {
-            $query->with(['bookings' => function ($query) use ($request) {
-                $query->take($request->limit['bookings'] ?? 100);
-            }])->take($request->limit['arrivals'] ?? 100);
-        }])->take($request->limit['areas'] ?? 100)->get());
+        return new AreaCollection(Area::on($database)->with('arrivals')->take($request->limit ?? 100)->get());
     
     }
 
-    public function show($database, $area, Request $request)
+    public function area($database, $area, Request $request)
     {
 
         return new AreaResource(Area::on($database)->findOrFail($area));
 
     }
 
-    public function showWithArrivals($database, $area, Request $request)
+    public function areaWithArrivals($database, $area, Request $request)
     {
-        return new AreaResource(Area::on($database)->with(['arrivals' => function ($query) use ($request) {
-            $query->with(['bookings' => function ($query) use ($request) {
-                $query->take($request->limit['bookings'] ?? 100);
-            }])->where($request->filter)->take($request->limit['arrivals'] ?? 100);
-        }])->find($area));
+
+        return new AreaResource(Area::on($database)->with('arrivals')->findOrFail($area));
+    
+    }
+
+    public function areaWithArrival($database, $area, $arrival, Request $request)
+    {
+        return new AreaResource(Area::on($database)->with(['arrivals' => function ($query) use ($arrival) {
+            $query->where('GroupArrivals.RefID', $arrival);
+        }])->findOrFail($area));
     }
 }
