@@ -60,89 +60,88 @@ go_kart_area
 
 ##### Routes
 
-/areas
+/areas  
 **Returns:** The first 100 areas ordered by description in ascending order.
 
-/areas/arrivals
+/areas/arrivals  
 **Returns:** The first 100 areas ordered by description with the arrivals belonging to each area ordered by time_created in descending order.
 
-/areas/{area_guid}
+/areas/{area_guid}  
 **Returns:** The specified area.
 
-/areas/{area_guid}/arrivals
+/areas/{area_guid}/arrivals  
 **Returns:** The specified area with the arrivals belonging to the specified area ordered by time_created in descending order.
 
-/areas/{area_guid}/arrivals/{ref_id}
+/areas/{area_guid}/arrivals/{ref_id}  
 **Returns:** The specified area with the specified arrival.
 
 #### Arrivals
 
 ##### Fields
 
-ref_id
-ref_no
-description
-grp_status_no
-all_day_event
-start_date_time
-end_date_time
-group_size
-num_adults
-num_children
-total_sale_amount
-toal_refund_amount
-total_discount_amount
-total_tax_amount
-total_gratuity_amount
-booking_date
-booking_emp_no
-birthday_event
-contact_first_name
-contact_last_name
-contact_phone_number
-contact_secondary_phone_number
-confirmed_date_time
-confirmed_emp_no
-notes
-host_emp_no
-greeter_emp_no
-sales_person_emp_no
-food_time_for_event
-food_prep_time
-kitchen_note
-private_notes
-manual_gratuity_amount
-flat_discount_amount
-host_language
-event_type_id
-booked_from_web
-web_review_date
-web_review_emp_no
-total_coupon_discount_amount
-security_code
-reschedule_ref_id
-cancel_date
-opened_by_station_no
-opened_by_emp_no
-customer_id
-contact_customer_id
-group_id
-web_store_version
+ref_id  
+ref_no  
+description  
+grp_status_no  
+all_day_event  
+start_date_time  
+end_date_time  
+group_size  
+num_adults  
+num_children  
+total_sale_amount  
+toal_refund_amount  
+total_discount_amount  
+total_tax_amount  
+total_gratuity_amount  
+booking_date  
+booking_emp_no  
+birthday_event  
+contact_first_name  
+contact_last_name  
+contact_phone_number  
+contact_secondary_phone_number  
+confirmed_date_time  
+confirmed_emp_no  
+notes  
+host_emp_no  
+greeter_emp_no  
+sales_person_emp_no  
+food_time_for_event  
+food_prep_time  
+kitchen_note  
+private_notes  
+manual_gratuity_amount  
+flat_discount_amount  
+host_language  
+event_type_id  
+booked_from_web  
+web_review_date  
+web_review_emp_no  
+total_coupon_discount_amount  
+security_code  
+reschedule_ref_id  
+cancel_date  
+opened_by_station_no  
+opened_by_emp_no  
+customer_id  
+contact_customer_id  
+group_id  
+web_store_version  
 
 ##### Routes
 
-/arrivals
-
+/arrivals  
 **Returns:** The first 100 arrivals ordered by time_created in descending order.
 
-/arrivals/areas
+/arrivals/areas  
 **Returns:** The first 100 arrivals ordered by time_created in descending order with the areas belonging to each arrival ordered by description.
 
-/arrivals/{ref_id}
+/arrivals/{ref_id}  
 **Returns:** The specified arrival.
 
-/arrivals/{ref_id}/areas
+/arrivals/{ref_id}/areas  
 **Returns:** The specified arrival with the areas belonging to the specified arrival ordered by description.
 
-/arrivals/{ref_id}/areas/{area_guid}
+/arrivals/{ref_id}/areas/{area_guid}  
 **Returns:** The specified arrival with the specified area.
