@@ -157,6 +157,14 @@ show_capcity
 laser_tag_area  
 go_kart_area  
 
+#### Conditional Fields
+
+The following fields are available when accessing areas from within arrivals:
+
+booking_ref_id  
+booking_start_date_time  
+booking_end_date_time  
+
 #### Routes
 
 /areas  
@@ -228,6 +236,14 @@ customer_id
 contact_customer_id  
 group_id  
 web_store_version  
+
+#### Conditional Fields
+
+The following fields are available when accessing arrivals from within areas:
+
+booking_area_guid  
+booking_start_date_time  
+booking_end_date_time  
 
 #### Routes
 

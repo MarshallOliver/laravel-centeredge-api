@@ -7,7 +7,6 @@ use MarshallOliver\LaravelCenterEdgeAPI\Resources\AreaCollection;
 use MarshallOliver\LaravelCenterEdgeAPI\Resources\Area as AreaResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class AreaController extends Controller
 {
@@ -41,8 +40,10 @@ class AreaController extends Controller
 
     public function areaWithArrival($database, $area, $arrival, Request $request)
     {
+
         return new AreaResource(Area::on($database)->with(['arrivals' => function ($query) use ($arrival) {
             $query->where('GroupArrivals.RefID', $arrival);
         }])->findOrFail($area));
+    
     }
 }

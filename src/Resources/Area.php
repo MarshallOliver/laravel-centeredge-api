@@ -44,6 +44,18 @@ class Area extends JsonResource
 
         $result['arrivals'] = new ArrivalCollection($this->whenLoaded('arrivals'));
 
+        $result['booking_ref_id'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
+            return $this->pivot->RefID;
+        });
+
+        $result['booking_start_date_time'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
+            return $this->pivot->StartDateTime;
+        });
+
+        $result['booking_end_date_time'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
+            return $this->pivot->EndDateTime;
+        });
+
         return $result;
     }
 }

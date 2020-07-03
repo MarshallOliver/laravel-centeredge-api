@@ -32,6 +32,6 @@ Route::group(['middleware' => ['api'], 'prefix' => 'api/catalog/{database}'], fu
 	Route::get('arrivals/areas', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\ArrivalController@arrivalsWithAreas');
 	Route::get('arrivals/{ref_id}', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\ArrivalController@arrival');
 	Route::get('arrivals/{ref_id}/areas', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\ArrivalController@arrivalWithAreas');
-	Route::get('arrivals/{ref_id}/areas/{{area_guid}', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\ArrivalController@arrivalWithArea');
+	Route::get('arrivals/{ref_id}/areas/{area_guid}', 'MarshallOliver\LaravelCenterEdgeAPI\Controllers\ArrivalController@arrivalWithArea');
 
 });

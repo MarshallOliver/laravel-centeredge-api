@@ -49,14 +49,14 @@ class Area extends Model
     protected static function booted()
     {
         static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('description', 'asc');
+            $builder->orderBy('Description', 'asc');
         });
     }
 
     public function arrivals()
     {
         return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'GroupAreaBookings', 'AreaGUID', 'RefID')
-                    ->withPivot('EventDate', 'StartDateTime', 'EndDateTime');
+                    ->withPivot('AreaGUID', 'StartDateTime', 'EndDateTime');
     }
 
 }

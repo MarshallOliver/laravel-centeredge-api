@@ -90,16 +90,8 @@ class Arrival extends Model
 
     public function areas()
     {
-    	return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Area')
-    				->using('MarshallOliver\LaravelCenterEdgeAPI\Booking')
-    				->withPivot('EventDate', 'StartDateTime', 'EndDateTime');
+    	return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Area', 'GroupAreaBookings', 'RefID', 'AreaGUID')
+    				->withPivot('RefID', 'StartDateTime', 'EndDateTime');
     }
 
-    public function bookings() {
-    	return $this->hasMany('MarshallOliver\LaravelCenterEdgeAPI\Booking', 'RefID', 'RefID');
-    }
-
-    // public function areas() {
-    // 	return $this->hasManyThrough('MarshallOliver\LaravelCenterEdgeAPI\Area', 'MarshallOliver\LaravelCenterEdgeAPI\Booking', 'RefID', 'AreaGUID', 'RefID', 'AreaGUID');
-    // }
 }

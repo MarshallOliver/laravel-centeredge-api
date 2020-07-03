@@ -4,34 +4,46 @@ namespace MarshallOliver\LaravelCenterEdgeAPI\Controllers;
 
 use MarshallOliver\LaravelCenterEdgeAPI\Arrival;
 use MarshallOliver\LaravelCenterEdgeAPI\Resources\ArrivalCollection;
-use MArshallOliver\LaravelCenterEdgeAPI\Resources\Arrival as ArrivalResource;
+use MarshallOliver\LaravelCenterEdgeAPI\Resources\Arrival as ArrivalResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ArrivalController extends Controller
 {
-    public function index($database, Request $request)
+    public function arrivals($database, Request $request)
     {
-    	return new ArrivalCollection(Arrival::on($database)->take($request->count ?? 100)->orderBy($request->order['arrivals'] ?? 'TimeCreated', 'desc')->get());
+
+    	return new ArrivalCollection(Arrival::on($database)->take($request->count ?? 100)->get());
+    
     }
 
-    public function areaIndex($database, $area, Request $request)
+    public function arrivalsWithAreas($database, Request $request)
     {
-        return new ArrivalCollection(Arrival::on($database)->with('areas')->where([['AreaGUID', '=', $area], ['StartDateTime', '=', '05/29/2020']])->take($request->count ?? 100)->get());
+
+        return new ArrivalCollection(Arrival::on($database)->with('areas')->take($request->limit ?? 100)->get());
+    
     }
 
-    public function indexWithAreas(Request $request)
+    public function arrival($database, $arrival, Request $request)
     {
-    	return new ArrivalCollection(Arrival::on($request->database)->with('areas')->take($request->limit ?? 100)->get());
+
+        return new ArrivalResource(Arrival::on($database)->findOrFail($arrival));
+
     }
 
-    public function show($database, $arrival, Request $request)
+    public function arrivalWithAreas($database, $arrival, Request $request)
     {
-    	return new ArrivalResource(Arrival::on($database)->findOrFail($arrival));
+
+        return new ArrivalResource(Arrival::on($database)->with('areas')->findOrFail($arrival));
+    
     }
 
-    public function showWithAreas($database, $arrival, Request $request)
+    public function arrivalWithArea($database, $arrival, $area, Request $request)
     {
-    	return new ArrivalResource(Arrival::on($database)->with('areas')->findOrFail($arrival));
+
+    	return new ArrivalResource(Arrival::on($database)->with(['areas' => function ($query) use ($area) {
+            $query->where('Areas.AreaGUID', $area);
+        }])->findOrFail($arrival));
+    
     }
 }
