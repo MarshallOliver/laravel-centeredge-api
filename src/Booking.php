@@ -33,7 +33,7 @@ class Booking extends ApiModel
     protected static function booted()
     {
         static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('StartDateTime', 'desc');
+            $builder->orderBy('StartDateTime', 'asc');
         });
     }
 
