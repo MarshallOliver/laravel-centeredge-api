@@ -2,9 +2,9 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
-use Illuminate\Database\Eloquent\Model;
+use MarshallOliver\LaravelCenterEdgeAPI\ApiModel;
 
-class Application extends Model
+class Application extends ApiModel
 {
     protected $table = 'ApplicationInfo';
     protected $primaryKey = null;

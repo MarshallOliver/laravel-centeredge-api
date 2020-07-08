@@ -10,18 +10,24 @@ use Illuminate\Http\Request;
 
 class AreaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('laravel-centeredge-api.construct.filters');
+    }
+
     public function areas($database, Request $request)
     {
 
-        return new AreaCollection(Area::on($database)->take($request->limit ?? 100)->get());
+        return new AreaCollection(Area::on($database)->get());
     
     }
 
     public function areasWithArrivals($database, Request $request)
     {
 
-        return new AreaCollection(Area::on($database)->with('arrivals')->take($request->limit ?? 100)->get());
-    
+        return new AreaCollection(Area::on($database)->withLimitedArrivals()->get());
+
     }
 
     public function area($database, $area, Request $request)
@@ -34,7 +40,7 @@ class AreaController extends Controller
     public function areaWithArrivals($database, $area, Request $request)
     {
 
-        return new AreaResource(Area::on($database)->with('arrivals')->findOrFail($area));
+        return new AreaResource(Area::on($database)->withLimitedArrivals()->findOrFail($area));
     
     }
 

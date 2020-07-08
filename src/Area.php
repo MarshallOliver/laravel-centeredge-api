@@ -2,11 +2,15 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
+use MarshallOliver\LaravelCenterEdgeAPI\ApiModel;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use MarshallOliver\LaravelCenterEdgeAPI\Traits\HasBookings;
 
-class Area extends Model
+class Area extends ApiModel
 {
+
+    use HasBookings;
+
     protected $table = 'Areas';
     protected $primaryKey = 'AreaGUID';
     public $incrementing = false;
@@ -51,12 +55,20 @@ class Area extends Model
         static::addGlobalScope('order', function (Builder $builder) {
             $builder->orderBy('Description', 'asc');
         });
+        
     }
 
     public function arrivals()
     {
         return $this->belongsToMany('MarshallOliver\LaravelCenterEdgeAPI\Arrival', 'GroupAreaBookings', 'AreaGUID', 'RefID')
                     ->withPivot('AreaGUID', 'StartDateTime', 'EndDateTime');
+    }
+
+    public function scopeWithLimitedArrivals($query, $filters = [])
+    {
+        return $query->with(['arrivals' => function ($query) use ($filters) {
+            $query->withoutGlobalScope('limits')->limit(request()->limit['arrivals'] ?? 100);
+        }]);
     }
 
 }

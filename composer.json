@@ -7,7 +7,9 @@
             "email": "moliver@andrettikarting.com"
         }
     ],
-    "require": {},
+    "require": {
+        "staudenmeir/eloquent-eager-limit": "^1.5"
+    },
     "extra": {
     	"laravel": {
     		"providers": [

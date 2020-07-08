@@ -79,15 +79,15 @@ class SanitizeFilters
                             foreach ($strings as $string) {
                                 if (strlen($string) > 0 && $string[0] == '-') {
                                     $notString = preg_replace('/\-/', '', $string);
-                                    $sanitizedFilters[] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], 'not like', '%' . $notString . '%'];
+                                    $sanitizedFilters[$table][] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], 'not like', '%' . $notString . '%'];
                                 } else {
-                                    $sanitizedFilters[] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], 'like', '%' . $string . '%'];
+                                    $sanitizedFilters[$table][] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], 'like', '%' . $string . '%'];
                                 }
 
                             }
 
                         } else {
-                            $sanitizedFilters[] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], $operatorMap[strtolower($operator)], $arg];
+                            $sanitizedFilters[$table][] = [$fieldMap['table'] . '.' . $fieldMap['fields'][$filter], $operatorMap[strtolower($operator)], $arg];
 
                         }
 

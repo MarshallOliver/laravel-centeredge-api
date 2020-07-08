@@ -2,9 +2,9 @@
 
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
-use Illuminate\Database\Eloquent\Model;
+use MarshallOliver\LaravelCenterEdgeAPI\ApiModel;
 
-class MessageLog extends Model
+class MessageLog extends ApiModel
 {
 	protected $table = 'MessageLog';
     protected $primaryKey = 'MsgID';
@@ -31,5 +31,13 @@ class MessageLog extends Model
 	const base64 = [
 
     ];
+
+        protected static function booted()
+    {
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('MsgDateTime', 'desc');
+        });
+        
+    }
     
 }

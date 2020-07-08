@@ -11,6 +11,12 @@ use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('laravel-centeredge-api.construct.filters');
+	}
+
     public function index($database, Request $request)
     {
 

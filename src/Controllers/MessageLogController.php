@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 
 class MessageLogController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('laravel-centeredge-api.construct.filters');
+	}
+	
     public function index($database, Request $request)
     {
 
-    	return new MessageLogCollection(MessageLog::on($database)->where($request->filter)->orderBy('MsgDateTime', 'desc')->paginate(50)->withQueryString());
+    	return new MessageLogCollection(MessageLog::on($database)->paginate(50)->withQueryString());
 
     }
 }

@@ -3,9 +3,9 @@
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use MarshallOliver\LaravelCenterEdgeAPI\ApiModel;
 
-class Booking extends Model
+class Booking extends ApiModel
 {
     protected $table = 'GroupAreaBookings';
     protected $primaryKey = null;
