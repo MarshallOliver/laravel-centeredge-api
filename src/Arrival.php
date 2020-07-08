@@ -88,7 +88,7 @@ class Arrival extends ApiModel
     protected static function booted()
     {
         static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('TimeCreated', 'desc');
+            $builder->orderBy('GroupArrivals.StartDateTime', 'asc');
         });
     }
 
