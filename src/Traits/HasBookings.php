@@ -20,7 +20,7 @@ trait HasBookings
 	    	};
 
         	if($hasJoinToBookings($builder->getQuery()->joins ?? [])) {
-        		$builder->where(request()->filter['bookings'] ?? []);
+        		$builder->where(request()->filter['bookings'] ?? [])->orderBy('GroupAreaBookings.StartDateTime', 'asc');
         	}
 
         });
