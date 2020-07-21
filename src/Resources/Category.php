@@ -19,7 +19,6 @@ class Category extends JsonResource
         
         $table = Model::fieldMap['table'];
         $fieldMap = Model::fieldMap['fields'];
-        $base64 = Model::base64;
 
         $result = [];
 
@@ -41,7 +40,7 @@ class Category extends JsonResource
             }
 
         }
-        
+
         return $result;
     }
 }
