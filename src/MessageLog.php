@@ -3,6 +3,7 @@
 namespace MarshallOliver\LaravelCenterEdgeAPI;
 
 use MarshallOliver\LaravelCenterEdgeAPI\ApiModel;
+use Illuminate\Database\Eloquent\Builder;
 
 class MessageLog extends ApiModel
 {
