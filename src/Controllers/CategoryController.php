@@ -3,6 +3,7 @@
 namespace MarshallOliver\LaravelCenterEdgeAPI\Controllers;
 
 use MarshallOliver\LaravelCenterEdgeAPI\Category;
+use MarshallOliver\LaravelCenterEdgeAPI\CategoryCollection;
 use MarshallOliver\LaravelCenterEdgeAPI\Resources\Category as CategoryResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
