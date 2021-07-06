@@ -14,4 +14,11 @@ class ApiModel extends Model
 	use HasEagerLimit;
 	use Limitable;
 
+	protected function scopeWithLimited($token, $query, $filters = [])
+	{
+		return $query->with([$token => function ($query) use ($filters) {
+			$query->withoutGlobalScope('limits')->limit(request()->limit[$token] ?? 100);
+		}]);
+	}
+
 }

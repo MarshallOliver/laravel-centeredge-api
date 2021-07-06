@@ -66,9 +66,7 @@ class Area extends ApiModel
 
     public function scopeWithLimitedArrivals($query, $filters = [])
     {
-        return $query->with(['arrivals' => function ($query) use ($filters) {
-            $query->withoutGlobalScope('limits')->limit(request()->limit['arrivals'] ?? 100);
-        }]);
+        return scopeWithLimited('arrivals', $query, $filters = []);
     }
 
 }
