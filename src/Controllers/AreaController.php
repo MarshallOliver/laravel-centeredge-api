@@ -16,7 +16,7 @@ class AreaController extends Controller
     public function index($database)
     {
     
-        return AreaResource::collection(Area::on($database)->get());
+        return AreaResource::collection(Area::on($database)->orderBy('Description')->get());
 
     }
 
@@ -47,7 +47,7 @@ class AreaController extends Controller
 
     }
 
-    public function areaBooking($database, $area_guid, $ref_id) 
+    public function areaBooking($database, $area_guid, $ref_id, Request $request) 
     {
 
         $areasHold = AreaSold::on($database)
