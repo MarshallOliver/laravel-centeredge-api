@@ -1,5 +1,5 @@
 {
-    "name": "marshalloliver/laravel-centeredge-api",
+    "name": "aikg/laravel-centeredge-api",
     "description": "A package for reading from and writing to a CenterEdge Advantage database",
     "authors": [
         {
@@ -13,13 +13,13 @@
     "extra": {
     	"laravel": {
     		"providers": [
-    			"MarshallOliver\\LaravelCenterEdgeAPI\\LaravelCenterEdgeAPIProvider"
+    			"AIKG\\LaravelCenterEdgeAPI\\LaravelCenterEdgeAPIProvider"
     		]
     	}
     },
     "autoload": {
         "psr-4": {
-            "MarshallOliver\\LaravelCenterEdgeAPI\\": "src"
+            "AIKG\\LaravelCenterEdgeAPI\\": "src"
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MarshallOliver\LaravelCenterEdgeAPI;
+namespace AIKG\LaravelCenterEdgeAPI;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -24,7 +24,7 @@ class LaravelCenterEdgeAPIProvider extends ServiceProvider
     public function boot()
     {
         $router = $this->app->make(\Illuminate\Routing\Router::class);
-        $router->aliasMiddleware('laravel-centeredge-api.construct.filters', \MarshallOliver\LaravelCenterEdgeAPI\Middleware\SanitizeFilters::class);
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        // $router->aliasMiddleware('laravel-centeredge-api.construct.filters', \AIKG\LaravelCenterEdgeAPI\Middleware\SanitizeFilters::class);
+        $this->loadRoutesFrom(__DIR__.'/Routes/routes.php');
     }
 }

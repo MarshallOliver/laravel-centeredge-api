@@ -1,10 +1,9 @@
 <?php
 
-namespace MarshallOliver\LaravelCenterEdgeAPI\Resources;
+namespace AIKG\LaravelCenterEdgeAPI\Resources;
 
-use MarshallOliver\LaravelCenterEdgeAPI\Booking as Model;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Str;
+use AIKG\LaravelCenterEdgeAPI\Resources\Arrival;
 
 class Booking extends JsonResource
 {
@@ -16,34 +15,18 @@ class Booking extends JsonResource
      */
     public function toArray($request)
     {
+        return [
+            'ref_id' => $this->RefID,
+            'area_guid' => $this->AreaGUID,
+            'sub_area_guid' => $this->SubAreaGUID,
+            'slot_guid' => $this->SlotGUID,
+            'event_date' => $this->EventDate,
+            'start_date_time' => $this->StartDateTime,
+            'end_date_time' => $this->EndDateTime,
+            'quantity' => $this->Quantity,
+            'actual_quantity' => $this->ActQuantity,
+            'arrival_info' => new Arrival($this->whenLoaded('arrivals')),
 
-        $table = Model::fieldMap['table'];
-        $fieldMap = Model::fieldMap['fields'];
-        $base64 = Model::base64;
-
-        $result = [];
-
-        if ($request->fields) {
-            $selects = Str::of($request->fields)->explode(',');
-        } else {
-            $selects = array_keys($fieldMap);
-        }
-
-        foreach ($selects as $select) {
-
-            if (!array_key_exists($select, $fieldMap)) { continue; }
-
-            $this->addSelect($table . '.' . $fieldMap[$select]);
-            if (in_array($select, $base64)) {
-                $result[$select] = base64_encode($this->{$fieldMap[$select]});
-            } else {
-                $result[$select] = $this->{$fieldMap[$select]};
-            }
-
-        }
-
-        $result['arrival'] = new Arrival($this->whenLoaded('arrival'));
-
-        return $result;
+        ];
     }
 }
