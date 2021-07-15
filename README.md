@@ -2,7 +2,7 @@
 
 ## Install
 
-composer require marshalloliver/laravel-centeredge-api
+composer require aikg/laravel-centeredge-api
 
 ## Usage
 

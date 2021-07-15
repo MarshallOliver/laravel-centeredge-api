@@ -1,10 +1,8 @@
 <?php
 
-namespace MarshallOliver\LaravelCenterEdgeAPI\Resources;
+namespace AIKG\LaravelCenterEdgeAPI\Resources;
 
-use MarshallOliver\LaravelCenterEdgeAPI\Area as Model;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Str;
 
 class Area extends JsonResource
 {
@@ -15,47 +13,30 @@ class Area extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        
-        $table = Model::fieldMap['table'];
-        $fieldMap = Model::fieldMap['fields'];
-        $base64 = Model::base64;
-
-        $result = [];
-
-        if ($request->fields) {
-            $selects = Str::of($request->fields)->explode(',');
-        } else {
-            $selects = array_keys($fieldMap);
-        }
-
-        foreach ($selects as $select) {
-
-            if (!array_key_exists($select, $fieldMap)) { continue; }
-
-            $this->addSelect($table . '.' . $fieldMap[$select]);
-            if (in_array($select, $base64) && $this->{$fieldMap[$select]}) {
-                $result[$select] = base64_encode($this->{$fieldMap[$select]});
-            } else {
-                $result[$select] = $this->{$fieldMap[$select]};
-            }
-
-        }
-
-        $result['arrivals'] = new ArrivalCollection($this->whenLoaded('arrivals'));
-
-        $result['booking_ref_id'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
-            return $this->pivot->RefID;
-        });
-
-        $result['booking_start_date_time'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
-            return $this->pivot->StartDateTime;
-        });
-
-        $result['booking_end_date_time'] = $this->whenPivotLoaded('GroupAreaBookings', function () {
-            return $this->pivot->EndDateTime;
-        });
-
-        return $result;
+    {        
+        return [
+            'area_guid' => $this->AreaGUID,
+            'description' => $this->Description,
+            'show_area' => $this->ShowArea,
+            'area_type' => $this->AreaType,
+            'capacity' => $this->Capacity,
+            'min_capacity' => $this->Min_Capacity,
+            'pre_arrival_minutes' => $this->PreArrivalMinutes,
+            'post_departure_minutes' => $this->PostDepartureMinutes,
+            'area_shown_at' => $this->AreaShownAt,
+            'min_deposit_amount' => $this->Min_DepositAmount,
+            'open_area_desc' => $this->OpenAreaDesc,
+            'web_enabled' => $this->WebEnabled,
+            'inv_id' => $this->InvID,
+            'web_capacity' => $this->WebCapacity,
+            'short_details' => $this->ShortDetails,
+            'long_details' => $this->LongDetails,
+            'thumbnail' => base64_encode($this->Thumbnail),
+            'picture' => base64_encode($this->Picture),
+            'show_capacity' => $this->ShowCapacity,
+            'laser_tag_area' => $this->LaserTagArea,
+            'go_kart_area' => $this->GoKartArea,
+            
+        ];
     }
 }

@@ -15,31 +15,19 @@ class MessageLog extends JsonResource
      */
     public function toArray($request)
     {
-        $table = Model::fieldMap['table'];
-        $fieldMap = Model::fieldMap['fields'];
-        $base64 = Model::base64;
 
-        $result = [];
+        return [
 
-        if ($request->fields) {
-            $selects = Str::of($request->fields)->explode(',');
-        } else {
-            $selects = array_keys($fieldMap);
-        }
+            'message_id' => $this->MsgID,
+			'message_date_time' => $this->MsgDateTime,
+			'station_no' => $this->StationNo,
+			'program_name' => $this->ProgramName,
+			'emp_no' => $this->EmpNo,
+			'message_text' => $this->MessageText,
+			'stack_trace' => $this->StackTrace,
+			'error' => $this->Error,
 
-        foreach ($selects as $select) {
+        ]
 
-            if (!array_key_exists($select, $fieldMap)) { continue; }
-
-            $this->addSelect($table . '.' . $fieldMap[$select]);
-            if (in_array($select, $base64) && $this->{$fieldMap[$select]}) {
-                $result[$select] = base64_encode($this->{$fieldMap[$select]});
-            } else {
-                $result[$select] = $this->{$fieldMap[$select]};
-            }
-
-        }
-
-        return $result;
     }
 }
